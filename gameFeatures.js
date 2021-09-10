@@ -183,7 +183,18 @@ class Game{
             }
         }
     }
-
+    
+    checkWhen_Egg_Hit_SpaceShip(){
+        for(let i=0;i<arrEggs.length;i++){
+            if(spaceShip.x+spaceShip.width-5>arrEggs[i].x
+                &&spaceShip.x+5<arrEggs[i].x+arrEggs[i].width
+                &&spaceShip.y+5<arrEggs[i].y+arrEggs[i].height
+                &&spaceShip.y+spaceShip.height/2-5>arrEggs[i].y){
+                isGameOver=true;
+                
+            }
+        }
+    }
     // start(){
     //     this.createArrChickens();
     //     if(this.over){

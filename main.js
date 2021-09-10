@@ -210,6 +210,7 @@ function playGame(){
         game.checkBulletHitChicken();
         game.checkWhen_Chicken_Hit_SpaceShip();
         game.checkGift_Hit_Spaceship();
+        game.checkWhen_Egg_Hit_SpaceShip();
 
         document.getElementById("scoreHere").innerHTML=score;
         document.getElementById('numberRocket').innerHTML=number_Rocket;

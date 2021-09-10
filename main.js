@@ -26,6 +26,7 @@ document.getElementById("waveDiv").innerHTML=wave_number;
 
 let sound1 = document.getElementById("backgroundMusic");
 let sound2 = document.getElementById("BossMusic")
+let explosionSound = document.getElementById('explosionSound')
 
 
 

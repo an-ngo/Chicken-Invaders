@@ -137,7 +137,7 @@ class Game{
     checkGift_Hit_Spaceship(){
         let checkGiftHitSS=(this.gift.x+this.gift.width>spaceShip.x
             &&this.gift.x<spaceShip.x+spaceShip.width
-            &&this.gift.y<spaceShip.y+spaceShip.height
+            &&this.gift.y<spaceShip.y+spaceShip.height/2-10
             &&this.gift.y>spaceShip.y)
         if(checkGiftHitSS){
             number_Rocket+=1;

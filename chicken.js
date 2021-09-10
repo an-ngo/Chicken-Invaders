@@ -64,7 +64,7 @@ class Chicken{
     explosion(index){
         arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
         this.count+=1;
-        if(this.count>=60){
+        if(this.count<=60){
             window.requestAnimationFrame(this.explosion);
         }
     }

@@ -14,21 +14,23 @@ class Bullet{
         this.width=defaultBullet.width;
         this.height=defaultBullet.height;
         this.color=defaultBullet.color;
-        this.speedX=defaultBullet.speedX;
+        //this.speedX=defaultBullet.speedX;
         this.speedY=defaultBullet.speedY;
-        this.x=20
-        this.y=600
+        this.x
+        this.y
+        //this.directorX=1;
+        //this.directorY=1;
         this.context=document.getElementById("myCanvas").getContext("2d")
     }
     changeBullet(newBullet){
         this.width=newBullet.width;
         this.height=newBullet.height;
         this.color=newBullet.color;
-        this.speedX=newBullet.speedX;
+        
         this.speedY=newBullet.speedY;
     }
     moveBullet(){
-        this.x-=this.speedX;
+        //this.x-=this.speedX*this.directorX;
         this.y-=this.speedY;
     }
     drawBullet(context){
@@ -41,7 +43,7 @@ class Bullet{
     }
     makeBulletMove(){
         if(this.y+this.height>0){
-            this.clearBullet();
+            //this.clearBullet();
             this.moveBullet();
             this.drawBullet();
 
@@ -50,13 +52,12 @@ class Bullet{
             this.x=spaceShip.x+34;
             this.y=spaceShip.y;
         
-    }
-
+        }
         //window.requestAnimationFrame(this.makeBulletMove);
     }
 
     makeArrBulletsMove(index){
-        this.clearBullet();
+        //this.clearBullet();
         if(this.y+this.height>0){
             this.moveBullet();
             this.drawBullet();
@@ -65,6 +66,9 @@ class Bullet{
             arrBullets.splice(index,1)
         }
     }
+
+    
+
     // destroy(){
     //     //check if bullet hit Top canvas
     //     if(this.y<=0){

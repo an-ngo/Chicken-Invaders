@@ -12,7 +12,7 @@ let score=0;
 let arrChickens=[]
 let arrGift=[]
 let arrBullets=[]
-let numberOfBullet=0
+let arrEggs=[]
 
 let chicken = new Chicken(greenChicken)
 let spaceShip=new SpaceShip(spaceShipImg);
@@ -112,7 +112,7 @@ function checkKeyDown(e){
 
     
 function shootOutBullet(){
-    let newBullet= new Bullet;
+    let newBullet= new Bullet(defaultBullet);
     //numberOfBullet+=1
     newBullet.x=spaceShip.x+34;
     newBullet.y=spaceShip.y+7;
@@ -203,6 +203,8 @@ function playGame(){
         game.drawArrChickens_And_MoveLeftToRight();
         game.drawArrBullets_And_MoveUp();
         game.drawGift_And_MoveDown();
+        game.createArrEggs();
+        
         spaceShip.moveSpaceShip();
         
         game.checkBulletHitChicken();

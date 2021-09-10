@@ -97,6 +97,29 @@ class Game{
         
     }
 
+    createArrEggs(){
+        for(let i=0;i<arrChickens.length;i++){
+            if(arrChickens[i].x+3>spaceShip.x&&arrChickens[i].x-3<spaceShip.x&&arrChickens[i].y<300){
+                let egg = new Egg();
+                egg.x=arrChickens[i].x+25;
+                egg.y=arrChickens[i].y+arrChickens[i].height-10;
+                // egg.image= new Image();
+                // egg.image.src='./img/egg.png'
+                
+                arrEggs.push(egg)
+            }
+        }
+        if(arrEggs.length>0){
+            this.drawArrEgg_And_MoveDown();
+        }
+    }
+
+    drawArrEgg_And_MoveDown(){
+        for(let i=0;i<arrEggs.length;i++){
+            arrEggs[i].makeArrEggsMove(i);
+        }
+    }
+
 
     drawArrBullets_And_MoveUp(){
         for(let i=0;i<arrBullets.length;i++){
@@ -125,11 +148,7 @@ class Game{
     }
 
     checkBulletHitChicken(){
-        //check if bullet hit Top canvas
-        // if(onlyBullet.y<=0){
-        //     onlyBullet.clearBullet();
-        // }
-        //check if bullet hit arrChickens
+        
         for(let j=0;j<arrBullets.length;j++){
             for(let i = 0;i<arrChickens.length;i++){
                 let checkBulletHitChicken=(arrBullets[j].x+arrBullets[j].width>arrChickens[i].x

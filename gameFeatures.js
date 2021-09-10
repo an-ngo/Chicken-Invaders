@@ -21,7 +21,7 @@ class Game{
     createArrChickens(){
         for(let i=0;i<number_chicken_per_wave;i++){
             this.chicken = new Chicken();
-            this.chicken.HP=Math.floor(Math.random()*1.5*wave_number)+1
+            this.chicken.HP=Math.floor(Math.random()*2*wave_number)+1
             if(Math.round(Math.random())){
                 this.chicken.x=-120*i
             }else {
@@ -55,7 +55,7 @@ class Game{
         if(wave_number%5!=0&&!isBoss){     //wave 5 is BOSS WAVE
             isBoss=false;
             wave_number+=1;
-            number_chicken_per_wave= 3 + wave_number*2;
+            number_chicken_per_wave= 3 + wave_number*3;
             this.createArrChickens();
             
         }else{

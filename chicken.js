@@ -18,7 +18,7 @@ class Chicken{
         this.centerX=this.x+this.width/2;
         this.centerY=this.y+this.height/2;
         this.imageDestroy = new Image();
-        this.HP=1;
+        this.HP=Math.floor(Math.random()*3)+1;
     }
     drawChicken(ctx){
         

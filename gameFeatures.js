@@ -38,7 +38,7 @@ class Game{
     createBossChicken(){
         this.bossChicken = new Chicken();
             this.bossChicken.image.src = './img/chickenBoss.png'
-            this.bossChicken.HP=5000;
+            this.bossChicken.HP=wave_number*100;
             this.bossChicken.width=300;
             this.bossChicken.height=300;
             this.bossChicken.x=450;
@@ -78,7 +78,7 @@ class Game{
         }
         else{
             isBoss=false;
-            this.prepareNextWave();
+            setTimeout(this.prepareNextWave(),2000);
         }
 
         if(isBoss){

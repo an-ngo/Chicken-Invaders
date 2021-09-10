@@ -221,7 +221,8 @@ function playGame(){
         //ctx.drawImage(spaceShip.explosionImg,spaceShip.x,spaceShip.y)
         setTimeout(function(){alert("Game over");},1500)
         sound1.pause()
-        sound1.currentTime =0
+        sound1.currentTime =0;
+        sound2.pause();
 
     }
     

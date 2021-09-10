@@ -99,7 +99,7 @@ class Game{
 
     createArrEggs(){
         for(let i=0;i<arrChickens.length;i++){
-            if(arrChickens[i].x+44>spaceShip.x+34&&arrChickens[i].x+34<spaceShip.x+34&&arrChickens[i].y<300){
+            if(arrChickens[i].x+44>spaceShip.x+34&&arrChickens[i].x+34<spaceShip.x+34&&arrChickens[i].y<350){
                 let egg = new Egg();
                 egg.x=arrChickens[i].x+25;
                 egg.y=arrChickens[i].y+arrChickens[i].height-10;

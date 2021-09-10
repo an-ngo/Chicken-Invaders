@@ -22,7 +22,7 @@ class Chicken{
     }
     drawChicken(ctx){
         
-        this.image.src='/img/chicken'+this.numberImage+'.png'
+        this.image.src='./img/chicken'+this.numberImage+'.png'
         this.context.drawImage(this.image,this.x,this.y,this.width,this.height);
     }
     clearChicken(ctx){
@@ -45,7 +45,7 @@ class Chicken{
         //remove chicken[index]
         let newChicken = arrChickens[index]
         arrChickens[index].clearChicken();
-        arrChickens[index].imageDestroy.src='/img/explosion0.png'
+        arrChickens[index].imageDestroy.src='./img/explosion0.png'
         arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
         //setTimeout(function(){newChicken.context.clearRect(newChicken.x,newChicken.y,newChicken.width,newChicken.height)},1000)
         arrChickens.splice(index,1);

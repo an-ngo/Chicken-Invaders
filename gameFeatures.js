@@ -37,7 +37,7 @@ class Game{
 
     createBossChicken(){
         this.bossChicken = new Chicken();
-            this.bossChicken.image.src = '/img/chickenBoss.png'
+            this.bossChicken.image.src = './img/chickenBoss.png'
             this.bossChicken.HP=5000;
             this.bossChicken.width=300;
             this.bossChicken.height=300;

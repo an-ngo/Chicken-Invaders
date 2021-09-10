@@ -45,7 +45,7 @@ class SpaceShip{
         else if(this.y+this.height/2>700) this.y=700-this.height/2;
     }
     drawSpaceShip(){
-        this.image.src="/img/spaceShip3.png"
+        this.image.src="./img/spaceShip3.png"
         this.context.drawImage(this.image,56,10,114,288,this.x,this.y,this.width,this.height)
         // this.image.src="/img/spaceShip.jpg"
         // this.context.drawImage(this.image,4,4,95,230,this.x,this.y,this.width,this.height)
@@ -56,7 +56,7 @@ class SpaceShip{
     isDestroy2(){
         this.clearSpaceShip();
         explosionImg = new Image();
-        explosionImg.src = '/img/explosion0.png'
+        explosionImg.src = './img/explosion0.png'
         this.context.drawImage(this.explosionImg,this.x+100,this.y+100,this.width,this.height)
     }
     isDestroy() {
@@ -64,7 +64,7 @@ class SpaceShip{
         let draw = () => ctx.drawImage(this.img, this.x, this.y, 100, 100);
         this.img = new Image();
         this.img.onload = draw;
-        this.img.src = '/img/explosion0.png';
+        this.img.src = './img/explosion0.png';
     }
 
 }

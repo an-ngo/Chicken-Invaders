@@ -10,7 +10,7 @@ let score=0;
 
 //arr of chicken
 let arrChickens=[]
-
+let arrGift=[]
 let arrBullets=[]
 let numberOfBullet=0
 
@@ -27,12 +27,7 @@ document.getElementById("waveDiv").innerHTML=wave_number;
 let sound1 = document.getElementById("backgroundMusic");
 let sound2 = document.getElementById("BossMusic")
 
-// var map = []; // You could also use an array
-// onkeydown = onkeyup = function(e){
-//     e = e || event; // to deal with IE
-//     map[e.keyCode] = e.type == 'keydown';
-//     /* insert conditional here */
-// }
+
 
 
 function checkKeyDown(e){
@@ -52,70 +47,68 @@ function checkKeyDown(e){
             
             case 38:
                 //up arrow
-                spaceShip.moveSSUp();
-                spaceShip.moveSpaceShip();
+                // spaceShip.moveSSUp();
+                // spaceShip.moveSpaceShip();
+                spaceShip.directorY=-1
+                spaceShip.directorX=0;
                 break;
             
             case 40:
                 //down arrow
-                spaceShip.moveSSDown();
-                spaceShip.moveSpaceShip();
+                // spaceShip.moveSSDown();
+                // spaceShip.moveSpaceShip();
+                spaceShip.directorY=1;
+                spaceShip.directorX=0;
+
                 break;
                 
             case 37:
                 //left arrow
-                spaceShip.moveSSLeft();
-                spaceShip.moveSpaceShip();
+                // spaceShip.moveSSLeft();
+                // spaceShip.moveSpaceShip();
+                spaceShip.directorX=-1;
+                spaceShip.directorY=0
                 break;
                 
             case 39:
                 //right arrow
-                spaceShip.moveSSRight();
-                spaceShip.moveSpaceShip();
+                // spaceShip.moveSSRight();
+                // spaceShip.moveSpaceShip();
+                spaceShip.directorX=1
+                spaceShip.directorY=0
                 break;
         }
     }
 }     
-    //CODE MAP[] HERE
-    // if(map[37]&&map[39]){
-    //     //up right 
-    //     spaceShip.moveSSUp();
-    //     spaceShip.moveSSRight();
-    //     spaceShip.moveSpaceShip();
-    // }
-    // else if(map[37]&&map[38]){
-    //     //up left              WORK
-    //     spaceShip.moveSSUp();
-    //     spaceShip.moveSSLeft(); 
-    //     spaceShip.moveSpaceShip();
-    // }
-    // else if(map[40]&&map[38]){
-    //     //down left
-    //     spaceShip.moveSSDown();
-    //     spaceShip.moveSSLeft();
-    //     spaceShip.moveSpaceShip();
-    // }
-    // else if(map[40]&&map[39]){
-    //     //down right           WORK
-    //     spaceShip.moveSSDown();
-    //     spaceShip.moveSSRight();
-    //     spaceShip.moveSpaceShip();
-    // }
-    // else if(map[38]&&!map[37]&&!map[39]){
-    //     //up
-    //     spaceShip.moveSSUp();
-    //     spaceShip.moveSpaceShip();
-    // }else if(map[37]){
-    //     spaceShip.moveSSLeft();
-    //     spaceShip.moveSpaceShip();
-    // }else if(map[39]){
-    //     spaceShip.moveSSRight();
-    //     spaceShip.moveSpaceShip();
-    // }
-    // else if(map[40]){
-    //     spaceShip.moveSSDown();
-    //     spaceShip.moveSpaceShip();
-    // }
+    
+// var map = []; // You could also use an array
+// onkeydown = onkeyup = function(e){
+//     e = e || event; // to deal with IE
+//     map[e.keyCode] = e.type == 'keydown';
+//     /* insert conditional here */
+// }
+// function checkKeyDown(){
+//         //CODE MAP[] HERE
+    
+//     if(map[38]){
+//         //up
+//         spaceShip.directorY=-1;
+//         spaceShip.directorX=0;
+//     }else if(map[37]){
+//         //left
+//         spaceShip.directorX=-1;
+//         spaceShip.directorY=0;
+//     }else if(map[39]){
+//         //right
+//         spaceShip.directorX=1;
+//         spaceShip.directorY=0;
+//     }
+//     else if(map[40]){
+//         //down
+//         spaceShip.directorY=1;
+//         spaceShip.directorX=0;
+//     }
+// }
 
     
 function shootOutBullet(){
@@ -126,17 +119,7 @@ function shootOutBullet(){
 
     arrBullets.push(newBullet);
     
-    // if(onlyBullet.y+onlyBullet.height>0){
-    //     onlyBullet.clearBullet(ctx);
-    //     onlyBullet.moveBullet();
-    //     onlyBullet.drawBullet(ctx);
-        
-    // }else{
-    //     onlyBullet.clearBullet(ctx);
-    //     onlyBullet.x=spaceShip.x+34;
-    //     onlyBullet.y=spaceShip.y;
-        
-    // }
+    
 }
 
 // function isBulletHitChicken(bullet,chicken){
@@ -198,6 +181,15 @@ function playMusic(){
     }
 }
 
+function destroyAllChickens(){
+    if(number_Rocket>0){
+        number_Rocket-=1;
+        let l=arrChickens.length
+        for(let i=0;i<l;i++){
+            arrChickens[0].isDestroy(0);
+        }
+    }
+}
 
 
 function playGame(){
@@ -205,15 +197,20 @@ function playGame(){
     if(!isGameOver){
         ctx.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
         spaceShip.drawSpaceShip(ctx);
-
-        game.destroy();
-        game.drawArrChickens_And_MoveLeftToRight();
-
+        shootOutBullet();
+        
         //onlyBullet.makeBulletMove();
+        game.drawArrChickens_And_MoveLeftToRight();
         game.drawArrBullets_And_MoveUp();
-
+        game.drawGift_And_MoveDown();
+        spaceShip.moveSpaceShip();
+        
+        game.checkBulletHitChicken();
         game.checkWhen_Chicken_Hit_SpaceShip();
+        game.checkGift_Hit_Spaceship();
+
         document.getElementById("scoreHere").innerHTML=score;
+        document.getElementById('numberRocket').innerHTML=number_Rocket;
         
         window.requestAnimationFrame(playGame)
     }else{

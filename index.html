@@ -46,14 +46,26 @@
             font-size: 30px ;  
             text-align: center;          
         }
+        #rocket{
+            position: absolute;
+            top: 90px;
+            left: 1210px;
+            border: 1px solid black;
+            width: 150px;
+            height: 40px;
+            background-color: rgb(115, 248, 230);
+            color: red;
+            font-size: 30px ;
+        }
        
     </style>
 </head>
 <body >
-    <canvas id="myCanvas" width="1200" height="700" style="border: 1px solid black;" onclick="shootOutBullet()"></canvas>
+    <canvas id="myCanvas" width="1200" height="700" style="border: 1px solid black;" onclick="destroyAllChickens()"></canvas>
     <div id="score"><b id="scorePoint">Score: </b><span id="scoreHere"></span></div>
     <div id="divWave"><b>Wave: </b><span id="waveDiv"></span></div>
     <div id="start"><button onclick="startGame()" id="button">Start</button></div>
+    <div id="rocket"><b>Rocket: </b><span id="numberRocket"></span></div>
     <img src="./img/spaceShip.png" alt="spaceShip" id="spaceShipImg" style="display: none;">
     <audio src="./sounds/backgroundMusic.mp3" id="backgroundMusic" ></audio>
     <audio src="./sounds/Boss.mp3" id="BossMusic"></audio>
@@ -62,6 +74,6 @@
 <script src="spaceShip.js"></script>
 <script src="chicken.js"></script>
 <script src="bullet.js"></script>
-
+<script src="gift.js"></script>
 <script src="gameFeatures.js"></script>
 <script src="main.js"></script>

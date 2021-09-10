@@ -12,13 +12,15 @@ class Chicken{
         this.bottomRightX=this.x+this.width 
         this.bottomY=this.y+this.height
         this.speed = 4;
-        this.speedY=1;
+        this.speedY=2;
         this.context=document.getElementById("myCanvas").getContext("2d")
         this.numberImage = Math.floor(Math.random()*3);
         this.centerX=this.x+this.width/2;
         this.centerY=this.y+this.height/2;
         this.imageDestroy = new Image();
         this.HP=Math.floor(Math.random()*3)+1;
+        this.count=0
+        this.gift= new Gift();
     }
     drawChicken(ctx){
         
@@ -43,10 +45,11 @@ class Chicken{
     }
     isDestroy(index){
         //remove chicken[index]
-        let newChicken = arrChickens[index]
+        //let newChicken = arrChickens[index]
         arrChickens[index].clearChicken();
         arrChickens[index].imageDestroy.src='./img/explosion0.png'
-        arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
+        //arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
+        this.explosion(index);
         //setTimeout(function(){newChicken.context.clearRect(newChicken.x,newChicken.y,newChicken.width,newChicken.height)},1000)
         arrChickens.splice(index,1);
         // let newChicken = new Chicken();
@@ -57,6 +60,13 @@ class Chicken{
 
         // arrChickens.push(newChicken);
 
+    }
+    explosion(index){
+        arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
+        this.count+=1;
+        if(this.count>=60){
+            window.requestAnimationFrame(this.explosion);
+        }
     }
     isChickenONWindow(){
         if(this.x<-this.width||this.y<-this.height){
@@ -104,6 +114,7 @@ class Chicken{
     drawAndMove_BossChicken(){
         if(this.y<0){
             this.y+=1;
+            this.x-=1;
             this.context.drawImage(this.image,this.x,this.y,this.width,this.height);
             
         }else{

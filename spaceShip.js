@@ -4,15 +4,16 @@ class SpaceShip{
 
         this.x=500
         this.y=500
-        this.speedX=10
-        this.speedY=5
+        this.speedX=3
+        this.speedY=3
         this.radius=10;
         this.image=new Image();
         this.width=70;
         this.height=130;
         this.canonOfSpaceShip_X=this.x+34;
         this.context=document.getElementById("myCanvas").getContext("2d")
-        this.director
+        this.directorX=1;
+        this.directorY=1;
         
         
     }
@@ -35,10 +36,8 @@ class SpaceShip{
         this.y+=this.speedY
     }
     moveSpaceShip(){
-        // this.moveSSDown();
-        // this.moveSSLeft();
-        // this.moveSSRight();
-        // this.moveSSUp();
+        this.x+=this.speedX*this.directorX;
+        this.y+=this.speedY*this.directorY;
         if(this.x<0) this.x=0;
         else if(this.x+this.width>1200) this.x=1200-this.width;
         if(this.y<0) this.y=0;

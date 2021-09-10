@@ -4,6 +4,8 @@ const CANVAS_HEIGHT = 700
 let number_chicken_per_wave = 3;
 let wave_number = 1;
 let isBoss=false;
+let number_Rocket=1;
+
 
 class Game{
     constructor(){  
@@ -13,11 +15,13 @@ class Game{
         //this.spaceShip = new SpaceShip();
         this.bullet = new Bullet();
         this.context = document.getElementById("myCanvas").getContext("2d")
+        this.gift  = new Gift();
         
     }
     createArrChickens(){
         for(let i=0;i<number_chicken_per_wave;i++){
             this.chicken = new Chicken();
+            this.chicken.HP=Math.floor(Math.random()*1.5*wave_number)+1
             if(Math.round(Math.random())){
                 this.chicken.x=-120*i
             }else {
@@ -25,7 +29,7 @@ class Game{
             }
 
             let randomY=Math.floor(Math.random()*3);
-            this.chicken.y = 100*randomY;
+            this.chicken.y = 100*randomY+3;
             if(Math.round(Math.random())){
                 this.chicken.speedY=-this.chicken.speedY
             }
@@ -39,8 +43,8 @@ class Game{
         this.bossChicken = new Chicken();
             this.bossChicken.image.src = './img/chickenBoss.png'
             this.bossChicken.HP=wave_number*100;
-            this.bossChicken.width=300;
-            this.bossChicken.height=300;
+            this.bossChicken.width=200;
+            this.bossChicken.height=200;
             this.bossChicken.x=450;
             this.bossChicken.y=-200;
             arrChickens.push(this.bossChicken);
@@ -53,7 +57,7 @@ class Game{
             wave_number+=1;
             number_chicken_per_wave= 3 + wave_number*2;
             this.createArrChickens();
-            document.getElementById("waveDiv").innerHTML=wave_number;
+            
         }else{
             wave_number+=1
             sound1.currentTime = 0;
@@ -63,7 +67,13 @@ class Game{
             number_chicken_per_wave=3+wave_number*5;
             this.createBossChicken();
             this.createArrChickens();
-            document.getElementById("waveDiv").innerHTML=wave_number;
+            
+        }
+        document.getElementById("waveDiv").innerHTML=wave_number;
+        document.getElementById('numberRocket').innerHTML=number_Rocket;
+        if(wave_number==2){
+            this.gift = new Gift();
+            arrGift.push(this.gift)
         }
     }
 
@@ -94,9 +104,27 @@ class Game{
         }
     }
 
+    drawGift_And_MoveDown(){
+        if(arrGift.length>0){
+            arrGift[0].moveAndDrawGift();
 
+            
+        }
+    }
 
-    destroy(){
+    checkGift_Hit_Spaceship(){
+        let checkGiftHitSS=(this.gift.x+this.gift.width>spaceShip.x
+            &&this.gift.x<spaceShip.x+spaceShip.width
+            &&this.gift.y<spaceShip.y+spaceShip.height
+            &&this.gift.y>spaceShip.y)
+        if(checkGiftHitSS){
+            number_Rocket+=1;
+            arrGift.splice(0,1);
+            this.gift.y=-100;
+        }
+    }
+
+    checkBulletHitChicken(){
         //check if bullet hit Top canvas
         // if(onlyBullet.y<=0){
         //     onlyBullet.clearBullet();

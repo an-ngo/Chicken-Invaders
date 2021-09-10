@@ -27,7 +27,7 @@ document.getElementById("waveDiv").innerHTML=wave_number;
 let sound1 = document.getElementById("backgroundMusic");
 let sound2 = document.getElementById("BossMusic")
 let explosionSound = document.getElementById('explosionSound')
-
+let spaceShipExplosion = document.getElementById('spaceShipExplosion')
 
 
 
@@ -224,6 +224,7 @@ function playGame(){
         sound1.pause()
         sound1.currentTime =0;
         sound2.pause();
+        spaceShipExplosion.play();
 
     }
     

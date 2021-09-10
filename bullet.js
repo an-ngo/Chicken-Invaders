@@ -3,7 +3,7 @@ const defaultBullet={
     height: 14,
     color: '#FF0000',
     speedX: 0,
-    speedY: 10,
+    speedY: 14,
 
 }
 
@@ -37,16 +37,16 @@ class Bullet{
 
     }
     clearBullet(context){
-        this.context.clearRect(this.x+this.speedX,this.y+this.speedY,this.width,this.height)
+        this.context.clearRect(this.x,this.y,this.width,this.height)
     }
     makeBulletMove(){
         if(this.y+this.height>0){
-            this.clearBullet(ctx);
+            this.clearBullet();
             this.moveBullet();
-            this.drawBullet(ctx);
+            this.drawBullet();
 
         }else{
-            this.clearBullet(ctx);
+            this.clearBullet();
             this.x=spaceShip.x+34;
             this.y=spaceShip.y;
         
@@ -54,24 +54,37 @@ class Bullet{
 
         //window.requestAnimationFrame(this.makeBulletMove);
     }
-    destroy(){
-        //check if bullet hit Top canvas
-        if(this.y<=0){
-            this.clearBullet();
-        }
-        //check if bullet hit arrChickens
-        for(let i = 0;i<arrChickens.length;i++){
-            let checkBulletHitChicken=(this.x+this.width>arrChickens[i].x
-                    &&this.x-this.width<arrChickens[i].x+arrChickens[i].width
-                    &&this.y<arrChickens[i].y+arrChickens[i].height)
-            if(checkBulletHitChicken){
-                //delete arrChickens[i];
-                this.clearBullet();
-                this.x=spaceShip.x+34;
-                this.y=spaceShip.y
-                arrChickens[i].isDestroy(i);
 
-            }
+    makeArrBulletsMove(index){
+        this.clearBullet();
+        if(this.y+this.height>0){
+            this.moveBullet();
+            this.drawBullet();
+        }
+        else{
+            arrBullets.splice(index,1)
         }
     }
+    // destroy(){
+    //     //check if bullet hit Top canvas
+    //     if(this.y<=0){
+    //         this.clearBullet();
+    //     }
+    //     //check if bullet hit arrChickens
+    //     for(let i = 0;i<arrChickens.length;i++){
+    //         let checkBulletHitChicken=(this.x+this.width>arrChickens[i].x
+    //                 &&this.x-this.width<arrChickens[i].x+arrChickens[i].width
+    //                 &&this.y<arrChickens[i].y+arrChickens[i].height
+    //                 &&this.y>arrChickens[i].y)
+                    
+    //         if(checkBulletHitChicken){
+    //             //delete arrChickens[i];
+    //             this.clearBullet();
+    //             this.x=spaceShip.x+34;
+    //             this.y=spaceShip.y
+    //             arrChickens[i].isDestroy(i);
+
+    //         }
+    //     }
+    // }
 }

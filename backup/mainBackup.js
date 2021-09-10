@@ -5,34 +5,43 @@ let greenChicken=document.getElementById('greenChickenImg')
 
 let isGameOver=false;
 let isShootOutBullet=false
+let score=0;
 
+//arr of chicken
+let arrChickens=[]
 
-let exampleBullet=new Bullet
-let chicken = new Chicken(greenChicken)
-let spaceShip=new SpaceShip(spaceShipImg);
-
-let onlyBullet = new Bullet;
-onlyBullet.x=spaceShip.x+34;
-onlyBullet.y=spaceShip.y+7;
-
-//let bullet2=[]
+let arrBullets=[]
 let numberOfBullet=0
 
+let chicken = new Chicken(greenChicken)
+let spaceShip=new SpaceShip(spaceShipImg);
+let game=new Game();
+
+document.getElementById("waveDiv").innerHTML=wave_number;
+
+
+game.createArrChickens();
 
 
 
-
-
+// var map = []; // You could also use an array
+// onkeydown = onkeyup = function(e){
+//     e = e || event; // to deal with IE
+//     map[e.keyCode] = e.type == 'keydown';
+//     /* insert conditional here */
+// }
 
 
 function checkKeyDown(e){
     spaceShip.clearSpaceShip(ctx)
     e=e||window.event;
     if(event.ctrlKey){
-        isShootOutBullet=true;
+        //isShootOutBullet=true;
         shootOutBullet();
     }
+
     switch (e.keyCode) {
+        
         case 38:
             //up arrow
             spaceShip.moveSSUp();
@@ -56,85 +65,121 @@ function checkKeyDown(e){
             spaceShip.moveSSRight();
             spaceShip.moveSpaceShip();
             break;
-        
-        default:
-            //spaceShip.shootOutBullet();
-            //spaceShip.Bullet.drawBullet(ctx);
-            break;
     }
-    // if(e.keyCode=='37'){
+}     
+    //CODE MAP[] HERE
+    // if(map[37]&&map[39]){
+    //     //up right 
+    //     spaceShip.moveSSUp();
+    //     spaceShip.moveSSRight();
+    //     spaceShip.moveSpaceShip();
+    // }
+    // else if(map[37]&&map[38]){
+    //     //up left              WORK
+    //     spaceShip.moveSSUp();
+    //     spaceShip.moveSSLeft(); 
+    //     spaceShip.moveSpaceShip();
+    // }
+    // else if(map[40]&&map[38]){
+    //     //down left
+    //     spaceShip.moveSSDown();
     //     spaceShip.moveSSLeft();
+    //     spaceShip.moveSpaceShip();
     // }
-}
+    // else if(map[40]&&map[39]){
+    //     //down right           WORK
+    //     spaceShip.moveSSDown();
+    //     spaceShip.moveSSRight();
+    //     spaceShip.moveSpaceShip();
+    // }
+    // else if(map[38]&&!map[37]&&!map[39]){
+    //     //up
+    //     spaceShip.moveSSUp();
+    //     spaceShip.moveSpaceShip();
+    // }else if(map[37]){
+    //     spaceShip.moveSSLeft();
+    //     spaceShip.moveSpaceShip();
+    // }else if(map[39]){
+    //     spaceShip.moveSSRight();
+    //     spaceShip.moveSpaceShip();
+    // }
+    // else if(map[40]){
+    //     spaceShip.moveSSDown();
+    //     spaceShip.moveSpaceShip();
+    // }
 
-function isBulletHitChicken(bullet,chicken){
-    if(bullet.y<=chicken.getBottomY()-5&&bullet.x<chicken.getBottomRightX()-5&&bullet.x>chicken.getBottomLeftX()+5){
-        //isGameOver=true;
-        return true;
-    }
-    else {
-        return false;
-        
-    }
-}
-
-function clearMoveDrawBullet(){
-    if(onlyBullet.y+onlyBullet.height>0){
-        onlyBullet.clearBullet(ctx);
-        onlyBullet.moveBullet();
-        onlyBullet.drawBullet(ctx);
-        window.requestAnimationFrame(clearMoveDrawBullet);
-    }else{
-        onlyBullet.x=spaceShip.x+34;
-        onlyBullet.y=spaceShip.y;
-        window.cancelAnimationFrame(clearMoveDrawBullet);
-    }
-}
-
-//let arrBullet[0]=new Bullet();
-function shootOutBullet(){
-    //let newBullet= new Bullet;
     
+function shootOutBullet(){
+    let newBullet= new Bullet;
     //numberOfBullet+=1
-    if(onlyBullet.y+onlyBullet.height>0){
-        onlyBullet.clearBullet(ctx);
-        onlyBullet.moveBullet();
-        onlyBullet.drawBullet(ctx);
+    newBullet.x=spaceShip.x+34;
+    newBullet.y=spaceShip.y+7;
+
+    arrBullets.push(newBullet);
+    
+    // if(onlyBullet.y+onlyBullet.height>0){
+    //     onlyBullet.clearBullet(ctx);
+    //     onlyBullet.moveBullet();
+    //     onlyBullet.drawBullet(ctx);
         
-    }else{
-        onlyBullet.clearBullet(ctx);
-        onlyBullet.x=spaceShip.x+34;
-        onlyBullet.y=spaceShip.y;
+    // }else{
+    //     onlyBullet.clearBullet(ctx);
+    //     onlyBullet.x=spaceShip.x+34;
+    //     onlyBullet.y=spaceShip.y;
         
-    }
-    // if(!isBulletHitChicken(onlyBullet,chicken)){
-    //     chicken.drawChicken(ctx);
     // }
 }
 
-function checkWhenBulletHitChicken(){
-    if(!isGameOver){
-        //exampleBullet.moveBullet()
+// function isBulletHitChicken(bullet,chicken){
+//     if(bullet.y<=chicken.getBottomY()-5&&bullet.x<chicken.getBottomRightX()-5&&bullet.x>chicken.getBottomLeftX()+5){
+//         //isGameOver=true;
+//         return true;
+//     }
+//     else {
+//         return false;
+        
+//     }
+// }
 
-        if(!isBulletHitChicken(onlyBullet,chicken)){
-            // onlyBullet.clearBullet(ctx)
-            // onlyBullet.moveBullet();
-            // onlyBullet.drawBullet(ctx);
-            chicken.drawChicken(ctx);
-            window.requestAnimationFrame(checkWhenBulletHitChicken)
-        } else {
-            // chicken.clearChicken(ctx)
-            // onlyBullet.clearBullet(ctx)
-            ctx.clearRect(0,0,1200,700)
-            onlyBullet.x=spaceShip.x+34;
-            onlyBullet.y=spaceShip.y
-            chicken.randomChangeChickenXY();
-            window.requestAnimationFrame(checkWhenBulletHitChicken)
+// function clearMoveDrawBullet(){
+//     if(onlyBullet.y+onlyBullet.height>0){
+//         onlyBullet.clearBullet(ctx);
+//         onlyBullet.moveBullet();
+//         onlyBullet.drawBullet(ctx);
+//         window.requestAnimationFrame(clearMoveDrawBullet);
+//     }else{
+//         onlyBullet.x=spaceShip.x+34;
+//         onlyBullet.y=spaceShip.y;
+//         window.cancelAnimationFrame(clearMoveDrawBullet);
+//     }
+// }
 
-        }
-    }
-}
 
+    
+
+
+// function checkWhenBulletHitChicken(){
+//     if(!isGameOver){
+//         //exampleBullet.moveBullet()
+
+//         if(!isBulletHitChicken(onlyBullet,chicken)){
+//             // onlyBullet.clearBullet(ctx)
+//             // onlyBullet.moveBullet();
+//             // onlyBullet.drawBullet(ctx);
+//             chicken.drawChicken(ctx);
+//             window.requestAnimationFrame(checkWhenBulletHitChicken)
+//         } else {
+//             // chicken.clearChicken(ctx)
+//             // onlyBullet.clearBullet(ctx)
+//             ctx.clearRect(0,0,1200,700)
+//             onlyBullet.x=spaceShip.x+34;
+//             onlyBullet.y=spaceShip.y
+//             chicken.randomChangeChickenXY();
+//             window.requestAnimationFrame(checkWhenBulletHitChicken)
+
+//         }
+//     }
+// }
 
 
 
@@ -143,22 +188,28 @@ function checkWhenBulletHitChicken(){
 
 
 function playGame(){
+    
+    if(!isGameOver){
         spaceShip.drawSpaceShip(ctx);
-        //moveBulletFrame(spaceShip);
-        //chicken.drawChicken(ctx)
 
-        
-        
+        game.destroy();
+        game.drawArrChickens_And_MoveLeftToRight();
 
+        //onlyBullet.makeBulletMove();
+        game.drawArrBullets_And_MoveUp();
+
+        game.checkWhen_Chicken_Hit_SpaceShip();
+        document.getElementById("scoreHere").innerHTML=score;
+        
         window.requestAnimationFrame(playGame)
+    }
     
 }
 
 
-checkWhenBulletHitChicken();
-playGame()
-setInterval(shootOutBullet,10)
+//checkWhenBulletHitChicken();
+//setInterval(shootOutBullet,10)
 //window.requestAnimationFrame(moveBulletFrame)
-//window.requestAnimationFrame(playGame)
 
 document.onkeydown=checkKeyDown
+window.requestAnimationFrame(playGame)

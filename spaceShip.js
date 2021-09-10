@@ -2,7 +2,7 @@ class SpaceShip{
     constructor(){
         let sefl=this;
 
-        this.x=200
+        this.x=500
         this.y=500
         this.speedX=10
         this.speedY=5
@@ -12,6 +12,8 @@ class SpaceShip{
         this.height=130;
         this.canonOfSpaceShip_X=this.x+34;
         this.context=document.getElementById("myCanvas").getContext("2d")
+        this.director
+        this.explosionImg = new Image();
         
     }
     // shootOutBullet(){
@@ -37,17 +39,24 @@ class SpaceShip{
         // this.moveSSLeft();
         // this.moveSSRight();
         // this.moveSSUp();
-        if(this.x-this.radius<0) this.x=this.radius;
-        else if(this.x+this.radius>1200) this.x=1200-this.radius;
-        if(this.y-this.radius<0) this.y=this.radius;
-        else if(this.y+this.radius>700) this.y=700-this.radius;
+        if(this.x<0) this.x=0;
+        else if(this.x+this.width>1200) this.x=1200-this.width;
+        if(this.y<0) this.y=0;
+        else if(this.y+this.height>700) this.y=700-this.height;
     }
-    drawSpaceShip(ctx){
-        this.image.src="/img/spaceShip.jpg"
-        this.context.drawImage(this.image,4,4,96,235,this.x,this.y,this.width,this.height)
+    drawSpaceShip(){
+        this.image.src="/img/spaceShip3.png"
+        this.context.drawImage(this.image,56,10,114,288,this.x,this.y,this.width,this.height)
+        // this.image.src="/img/spaceShip.jpg"
+        // this.context.drawImage(this.image,4,4,95,230,this.x,this.y,this.width,this.height)
     }
-    clearSpaceShip(ctx){
+    clearSpaceShip(){
         this.context.clearRect(this.x,this.y,this.width,this.height)
+    }
+    isDestroy(){
+        this.clearSpaceShip();
+        this.explosionImg.src = '/img/explosion0.png'
+        this.context.drawImage(this.explosionImg,this.x+100,this.y+100,this.width,this.height)
     }
 
 }

@@ -6,14 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chicken-Invader</title>
     <style>
-        
+       #myCanvas{
+            background-image: url(/img/BackGround.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+       } 
+       #divWave{
+            position: absolute;
+            top: 9px;
+            left: 1210px;
+            border: 1px solid black;
+            width:150px ;
+            height: 40px;
+            background-color: rgb(125, 188, 247);
+            color: red;
+            font-size: 30px;
+       }
+       #score{
+           position: absolute;
+           top: 50px;
+           left: 1210px;
+           border: 1px solid black;
+           width: 150px;
+           height: 40px;
+           background-color: rgb(115, 248, 230);
+           color: red;
+           font-size: 30px ;
+       }
     </style>
 </head>
 <body>
     <canvas id="myCanvas" width="1200" height="700" style="border: 1px solid black;"></canvas>
-    <img src="/img/spaceShip.jpg" alt="spaceShip" id="spaceShipImg" style="display: none;">
-    <img src="/img/greenchicken.png" alt="chickenGreen" id="greenChickenImg" style="display:  none;">
-    <img src="/img/redChicken.png" alt="" style="display: none;">
+    <div id="score"><b id="scorePoint">Score: </b><span id="scoreHere"></span></div>
+    <div id="divWave"><b>Wave: </b><span id="waveDiv"></span></div>
+    <img src="/img/spaceShip.png" alt="spaceShip" id="spaceShipImg" style="display: none;">
 </body>
 </html>
 <script src="spaceShip.js"></script>

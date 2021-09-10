@@ -34,17 +34,34 @@
            color: red;
            font-size: 30px ;
        }
+       #start{
+            position: absolute;
+            top: 350px;
+            left: 550px;
+            
+            width: 150px;
+            height: 40px;
+            
+            color: red;
+            font-size: 30px ;  
+            text-align: center;          
+        }
+       
     </style>
 </head>
-<body>
+<body >
     <canvas id="myCanvas" width="1200" height="700" style="border: 1px solid black;"></canvas>
     <div id="score"><b id="scorePoint">Score: </b><span id="scoreHere"></span></div>
     <div id="divWave"><b>Wave: </b><span id="waveDiv"></span></div>
+    <div id="start"><button onclick="startGame()" id="button">Start</button></div>
     <img src="/img/spaceShip.png" alt="spaceShip" id="spaceShipImg" style="display: none;">
+    <audio src="/sounds/backgroundMusic.mp3" id="backgroundMusic" ></audio>
+    <audio src="/sounds/Boss.mp3" id="BossMusic"></audio>
 </body>
 </html>
 <script src="spaceShip.js"></script>
 <script src="chicken.js"></script>
 <script src="bullet.js"></script>
+
 <script src="gameFeatures.js"></script>
 <script src="main.js"></script>

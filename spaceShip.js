@@ -13,7 +13,7 @@ class SpaceShip{
         this.canonOfSpaceShip_X=this.x+34;
         this.context=document.getElementById("myCanvas").getContext("2d")
         this.director
-        this.explosionImg = new Image();
+        
         
     }
     // shootOutBullet(){
@@ -42,7 +42,7 @@ class SpaceShip{
         if(this.x<0) this.x=0;
         else if(this.x+this.width>1200) this.x=1200-this.width;
         if(this.y<0) this.y=0;
-        else if(this.y+this.height>700) this.y=700-this.height;
+        else if(this.y+this.height/2>700) this.y=700-this.height/2;
     }
     drawSpaceShip(){
         this.image.src="/img/spaceShip3.png"
@@ -53,10 +53,18 @@ class SpaceShip{
     clearSpaceShip(){
         this.context.clearRect(this.x,this.y,this.width,this.height)
     }
-    isDestroy(){
+    isDestroy2(){
         this.clearSpaceShip();
-        this.explosionImg.src = '/img/explosion0.png'
+        explosionImg = new Image();
+        explosionImg.src = '/img/explosion0.png'
         this.context.drawImage(this.explosionImg,this.x+100,this.y+100,this.width,this.height)
+    }
+    isDestroy() {
+        this.clearSpaceShip();
+        let draw = () => ctx.drawImage(this.img, this.x, this.y, 100, 100);
+        this.img = new Image();
+        this.img.onload = draw;
+        this.img.src = '/img/explosion0.png';
     }
 
 }

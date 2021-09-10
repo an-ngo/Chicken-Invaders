@@ -14,10 +14,11 @@ class Chicken{
         this.speed = 4;
         this.speedY=1;
         this.context=document.getElementById("myCanvas").getContext("2d")
-        this.numberImage = Math.round(Math.random());
+        this.numberImage = Math.floor(Math.random()*3);
         this.centerX=this.x+this.width/2;
         this.centerY=this.y+this.height/2;
         this.imageDestroy = new Image();
+        this.HP=1;
     }
     drawChicken(ctx){
         
@@ -46,7 +47,7 @@ class Chicken{
         arrChickens[index].clearChicken();
         arrChickens[index].imageDestroy.src='/img/explosion0.png'
         arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
-        setTimeout(function(){newChicken.context.clearRect(newChicken.x,newChicken.y,newChicken.width,newChicken.height)},1000)
+        //setTimeout(function(){newChicken.context.clearRect(newChicken.x,newChicken.y,newChicken.width,newChicken.height)},1000)
         arrChickens.splice(index,1);
         // let newChicken = new Chicken();
         // let check=Math.round(Math.random());
@@ -82,7 +83,7 @@ class Chicken{
     // }
     drawAndMoveLeftToRight2(){
         if(this.x>=0&&this.x+this.width<CANVAS_WIDTH){
-            this.clearChicken();
+            //this.clearChicken();
             this.x+=this.speed;
             this.y+=this.speedY
             this.drawChicken();
@@ -97,6 +98,16 @@ class Chicken{
         }
         if(this.y<0||this.y+this.height>CANVAS_HEIGHT){
             this.speedY=-this.speedY
+        }
+    }
+
+    drawAndMove_BossChicken(){
+        if(this.y<0){
+            this.y+=1;
+            this.context.drawImage(this.image,this.x,this.y,this.width,this.height);
+            
+        }else{
+            this.context.drawImage(this.image,this.x,this.y,this.width,this.height);
         }
     }
 }

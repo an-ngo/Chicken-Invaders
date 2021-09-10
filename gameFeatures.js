@@ -3,6 +3,7 @@ const CANVAS_HEIGHT = 700
 
 let number_chicken_per_wave = 3;
 let wave_number = 1;
+let isBoss=false;
 
 class Game{
     constructor(){  
@@ -22,29 +23,66 @@ class Game{
             }else {
                 this.chicken.x=CANVAS_WIDTH+120*i;
             }
+
+            let randomY=Math.floor(Math.random()*3);
+            this.chicken.y = 100*randomY;
+            if(Math.round(Math.random())){
+                this.chicken.speedY=-this.chicken.speedY
+            }
             //this.chicken.x=Math.round(Math.random()*CANVAS_WIDTH-this.chicken.width)+this.chicken.width
             arrChickens.push(this.chicken);
         }
         //this.arrChickens=arrChickens;
     }
 
+    createBossChicken(){
+        this.bossChicken = new Chicken();
+            this.bossChicken.image.src = '/img/chickenBoss.png'
+            this.bossChicken.HP=5000;
+            this.bossChicken.width=300;
+            this.bossChicken.height=300;
+            this.bossChicken.x=450;
+            this.bossChicken.y=-200;
+            arrChickens.push(this.bossChicken);
+            //arrChickens.push(this.bossChicken)
+    }
+
     prepareNextWave(){
-        number_chicken_per_wave+=2;
-        wave_number+=1;
-        this.createArrChickens();
-        document.getElementById("waveDiv").innerHTML=wave_number;
+        if(wave_number%5!=0&&!isBoss){     //wave 5 is BOSS WAVE
+            isBoss=false;
+            wave_number+=1;
+            number_chicken_per_wave= 3 + wave_number*2;
+            this.createArrChickens();
+            document.getElementById("waveDiv").innerHTML=wave_number;
+        }else{
+            wave_number+=1
+            sound1.currentTime = 0;
+            sound1.pause();
+            sound2.play();
+            isBoss=true;
+            number_chicken_per_wave=3+wave_number*5;
+            this.createBossChicken();
+            this.createArrChickens();
+            document.getElementById("waveDiv").innerHTML=wave_number;
+        }
     }
 
     drawArrChickens_And_MoveLeftToRight(){
+
         if(arrChickens.length>0){
             for(let i=0;i<arrChickens.length;i++){
 
-                arrChickens[i].drawAndMoveLeftToRight2()
+                arrChickens[i].drawAndMoveLeftToRight2();
             
             }
         }
         else{
+            isBoss=false;
             this.prepareNextWave();
+        }
+
+        if(isBoss){
+            arrChickens[0].drawAndMove_BossChicken();
         }
         
     }
@@ -66,21 +104,24 @@ class Game{
         //check if bullet hit arrChickens
         for(let j=0;j<arrBullets.length;j++){
             for(let i = 0;i<arrChickens.length;i++){
-            let checkBulletHitChicken=(arrBullets[j].x+arrBullets[j].width>arrChickens[i].x
-                    &&arrBullets[j].x<arrChickens[i].x+arrChickens[i].width
-                    &&arrBullets[j].y<arrChickens[i].y+arrChickens[i].height
-                    &&arrBullets[j].y>arrChickens[i].y)
-                    
-            if(checkBulletHitChicken){
-                //delete arrChickens[i];
-                arrBullets[j].clearBullet();
-                arrBullets[j].x=spaceShip.x+34;
-                arrBullets[j].y=spaceShip.y;
-                score+=1;
-                arrChickens[i].isDestroy(i);
+                let checkBulletHitChicken=(arrBullets[j].x+arrBullets[j].width>arrChickens[i].x
+                        &&arrBullets[j].x<arrChickens[i].x+arrChickens[i].width
+                        &&arrBullets[j].y<arrChickens[i].y+arrChickens[i].height
+                        &&arrBullets[j].y>arrChickens[i].y)
 
+                if(checkBulletHitChicken){
+                    //delete arrChickens[i];
+                    arrChickens[i].HP-=1
+                    arrBullets[j].clearBullet();
+                    arrBullets[j].x=spaceShip.x+34;
+                    arrBullets[j].y=spaceShip.y;
+                    score+=1;
+                    if(arrChickens[i].HP<1){
+                        arrChickens[i].isDestroy(i);
+                    }
+
+                }
             }
-        }
         }
     }
 

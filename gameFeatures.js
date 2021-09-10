@@ -4,7 +4,7 @@ const CANVAS_HEIGHT = 700
 let number_chicken_per_wave = 3;
 let wave_number = 1;
 let isBoss=false;
-let number_Rocket=1;
+let number_Rocket=2;
 
 
 class Game{

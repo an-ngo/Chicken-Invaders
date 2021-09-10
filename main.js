@@ -189,6 +189,9 @@ function destroyAllChickens(){
         for(let i=0;i<l;i++){
             arrChickens[0].isDestroy(0);
         }
+        spaceShipExplosion.pause();
+        spaceShipExplosion.currentTime = 0;
+        spaceShipExplosion.play();
     }
 }
 
@@ -224,6 +227,8 @@ function playGame(){
         sound1.pause()
         sound1.currentTime =0;
         sound2.pause();
+        spaceShipExplosion.pause();
+        spaceShipExplosion.currentTime = 0;
         spaceShipExplosion.play();
 
     }

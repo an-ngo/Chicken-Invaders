@@ -4,8 +4,8 @@ class SpaceShip{
 
         this.x=500
         this.y=500
-        this.speedX=5
-        this.speedY=3
+        this.speedX=6
+        this.speedY=5
         this.radius=10;
         this.image=new Image();
         this.width=70;

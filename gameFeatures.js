@@ -71,7 +71,7 @@ class Game{
         }
         document.getElementById("waveDiv").innerHTML=wave_number;
         document.getElementById('numberRocket').innerHTML=number_Rocket;
-        if(wave_number==2){
+        if(wave_number%3==0){
             this.gift = new Gift();
             arrGift.push(this.gift)
         }
@@ -99,7 +99,7 @@ class Game{
 
     createArrEggs(){
         for(let i=0;i<arrChickens.length;i++){
-            if(arrChickens[i].x+44>spaceShip.x+34&&arrChickens[i].x+34<spaceShip.x+34&&arrChickens[i].y<400){
+            if(arrChickens[i].x+44>spaceShip.x+34&&arrChickens[i].x+34<spaceShip.x+34&&arrChickens[i].y<300){
                 let egg = new Egg();
                 egg.x=arrChickens[i].x+25;
                 egg.y=arrChickens[i].y+arrChickens[i].height-10;
@@ -129,9 +129,8 @@ class Game{
 
     drawGift_And_MoveDown(){
         if(arrGift.length>0){
-            arrGift[0].moveAndDrawGift();
+            arrGift[0].moveAndDrawGift(); 
 
-            
         }
     }
 

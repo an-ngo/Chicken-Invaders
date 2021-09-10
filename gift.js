@@ -2,7 +2,7 @@ class Gift{
     constructor(){
         this.x=Math.floor(Math.random()*800)+200
         this.y=-50
-        this.speedY=1
+        this.speedY=3
         this.img = new Image();
         this.img.src = "./img/gift0.png"
         this.width=50

@@ -11,7 +11,7 @@ class Chicken{
         this.bottomLeftX=this.x 
         this.bottomRightX=this.x+this.width 
         this.bottomY=this.y+this.height
-        this.speed = 4;
+        this.speed = 3;
         this.speedY=2;
         this.context=document.getElementById("myCanvas").getContext("2d")
         this.numberImage = Math.floor(Math.random()*3);

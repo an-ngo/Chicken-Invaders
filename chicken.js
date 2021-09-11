@@ -50,9 +50,9 @@ class Chicken{
         arrChickens[index].imageDestroy.src='./img/explosion0.png'
         //arrChickens[index].context.drawImage(arrChickens[index].imageDestroy,arrChickens[index].x,arrChickens[index].y,arrChickens[index].width,arrChickens[index].height);
         this.explosion(index);
-        explosionSound.pause();
-        explosionSound.currentTime = 0;
-        explosionSound.play()
+        // explosionSound.pause();
+        // explosionSound.currentTime = 0;
+        // explosionSound.play()
         //setTimeout(function(){newChicken.context.clearRect(newChicken.x,newChicken.y,newChicken.width,newChicken.height)},1000)
         arrChickens.splice(index,1);
         // let newChicken = new Chicken();

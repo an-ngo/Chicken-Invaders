@@ -3,14 +3,14 @@ class Egg{
         this.width=30;
         this.height=30;
         //this.speedX=defaultBullet.speedX;
-        this.speedY=6;
+        this.speedY=3;
         this.x
         this.y
         //this.directorX=1;
         //this.directorY=1;
         this.context=document.getElementById("myCanvas").getContext("2d")
         this.image=new Image();
-        this.image.src='./img/egg.png'
+        this.image.src='./img/egg'+Math.round(Math.random())+'.png'
     }
 
     moveEgg(){

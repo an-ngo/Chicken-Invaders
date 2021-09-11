@@ -11,14 +11,14 @@ class Chicken{
         this.bottomLeftX=this.x 
         this.bottomRightX=this.x+this.width 
         this.bottomY=this.y+this.height
-        this.speed = 3;
-        this.speedY=2;
+        this.speed = 2;
+        this.speedY=1;
         this.context=document.getElementById("myCanvas").getContext("2d")
         this.numberImage = Math.floor(Math.random()*3);
         this.centerX=this.x+this.width/2;
         this.centerY=this.y+this.height/2;
         this.imageDestroy = new Image();
-        this.HP=Math.floor(Math.random()*3)+1;
+        this.HP=Math.floor(Math.random())+1;
         this.count=0
         this.gift= new Gift();
     }

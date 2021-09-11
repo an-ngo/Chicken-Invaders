@@ -42,7 +42,7 @@ class Game{
     createBossChicken(){
         this.bossChicken = new Chicken();
             this.bossChicken.image.src = './img/chickenBoss.png'
-            this.bossChicken.HP=wave_number*100;
+            this.bossChicken.HP=wave_number*12;
             this.bossChicken.width=200;
             this.bossChicken.height=200;
             this.bossChicken.x=450;
@@ -176,7 +176,7 @@ class Game{
             if(spaceShip.x+spaceShip.width-5>arrChickens[i].x
                 &&spaceShip.x+5<arrChickens[i].x+arrChickens[i].width
                 &&spaceShip.y+5<arrChickens[i].y+arrChickens[i].height
-                &&spaceShip.y+spaceShip.height/2-5>arrChickens[i].y){
+                &&spaceShip.y+spaceShip.height/2-20>arrChickens[i].y){
                 isGameOver=true;
                 
             }
@@ -188,7 +188,7 @@ class Game{
             if(spaceShip.x+spaceShip.width-5>arrEggs[i].x
                 &&spaceShip.x+5<arrEggs[i].x+arrEggs[i].width
                 &&spaceShip.y+5<arrEggs[i].y+arrEggs[i].height
-                &&spaceShip.y+spaceShip.height/2-5>arrEggs[i].y){
+                &&spaceShip.y+spaceShip.height/2-20>arrEggs[i].y){
                 isGameOver=true;
                 
             }

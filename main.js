@@ -25,10 +25,13 @@ document.getElementById("waveDiv").innerHTML=wave_number;
 
 
 let sound1 = document.getElementById("backgroundMusic");
-let sound2 = document.getElementById("BossMusic")
-let explosionSound = document.getElementById('explosionSound')
-let spaceShipExplosion = document.getElementById('spaceShipExplosion')
 
+let sound2 = document.getElementById("BossMusic")
+
+let explosionSound = document.getElementById('explosionSound')
+explosionSound.volume;
+let spaceShipExplosion = document.getElementById('spaceShipExplosion')
+spaceShipExplosion.set('volume',0.5);
 
 
 function checkKeyDown(e){
@@ -195,13 +198,20 @@ function destroyAllChickens(){
     }
 }
 
+function moveSpaceShipMouse(e){
+    spaceShip.x=event.clientX-45;
+    spaceShip.y=event.clientY-35;
+    spaceShip.update();
+    spaceShip.drawSpaceShip();
+}
+
 
 function playGame(){
     
     if(!isGameOver){
         ctx.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
         spaceShip.drawSpaceShip(ctx);
-        shootOutBullet();
+        //shootOutBullet();
         
         //onlyBullet.makeBulletMove();
         game.drawArrChickens_And_MoveLeftToRight();
@@ -209,7 +219,7 @@ function playGame(){
         game.drawGift_And_MoveDown();
         game.createArrEggs();
         
-        spaceShip.moveSpaceShip();
+        //spaceShip.moveSpaceShip();
         
         game.checkBulletHitChicken();
         game.checkWhen_Chicken_Hit_SpaceShip();

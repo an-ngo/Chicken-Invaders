@@ -38,51 +38,51 @@ function checkKeyDown(e){
     e=e||window.event;
     if(event.ctrlKey){
         //isShootOutBullet=true;
-        shootOutBullet();
+        destroyAllChickens();
     }
     
-    if(!isGameOver){    
-        spaceShip.clearSpaceShip(ctx)
-        // if(!isMusicON){
-        //     isMusicON=true;
-        //     sound1.play()
-        // }
-        switch (e.keyCode) {
+    // if(!isGameOver){    
+    //     spaceShip.clearSpaceShip(ctx)
+    //     // if(!isMusicON){
+    //     //     isMusicON=true;
+    //     //     sound1.play()
+    //     // }
+    //     switch (e.keyCode) {
             
-            case 38:
-                //up arrow
-                // spaceShip.moveSSUp();
-                // spaceShip.moveSpaceShip();
-                spaceShip.directorY=-1
-                spaceShip.directorX=0;
-                break;
+    //         case 38:
+    //             //up arrow
+    //             // spaceShip.moveSSUp();
+    //             // spaceShip.moveSpaceShip();
+    //             spaceShip.directorY=-1
+    //             spaceShip.directorX=0;
+    //             break;
             
-            case 40:
-                //down arrow
-                // spaceShip.moveSSDown();
-                // spaceShip.moveSpaceShip();
-                spaceShip.directorY=1;
-                spaceShip.directorX=0;
+    //         case 40:
+    //             //down arrow
+    //             // spaceShip.moveSSDown();
+    //             // spaceShip.moveSpaceShip();
+    //             spaceShip.directorY=1;
+    //             spaceShip.directorX=0;
 
-                break;
+    //             break;
                 
-            case 37:
-                //left arrow
-                // spaceShip.moveSSLeft();
-                // spaceShip.moveSpaceShip();
-                spaceShip.directorX=-1;
-                spaceShip.directorY=0
-                break;
+    //         case 37:
+    //             //left arrow
+    //             // spaceShip.moveSSLeft();
+    //             // spaceShip.moveSpaceShip();
+    //             spaceShip.directorX=-1;
+    //             spaceShip.directorY=0
+    //             break;
                 
-            case 39:
-                //right arrow
-                // spaceShip.moveSSRight();
-                // spaceShip.moveSpaceShip();
-                spaceShip.directorX=1
-                spaceShip.directorY=0
-                break;
-        }
-    }
+    //         case 39:
+    //             //right arrow
+    //             // spaceShip.moveSSRight();
+    //             // spaceShip.moveSpaceShip();
+    //             spaceShip.directorX=1
+    //             spaceShip.directorY=0
+    //             break;
+    //     }
+    // }
 }     
     
 // var map = []; // You could also use an array

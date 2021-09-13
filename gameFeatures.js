@@ -76,7 +76,7 @@ class Game{
             this.gift = new Gift();
             arrGift.push(this.gift)
         }
-        if(wave_number==11g){
+        if(wave_number==11){
             isGameOver=true;
             alert("you pha' dao? the game");
         }

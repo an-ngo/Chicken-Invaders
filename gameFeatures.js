@@ -42,7 +42,7 @@ class Game{
     createBossChicken(){
         this.bossChicken = new Chicken();
             this.bossChicken.image.src = './img/chickenBoss.png'
-            this.bossChicken.HP=wave_number*12;
+            this.bossChicken.HP=wave_number*7;
             this.bossChicken.width=200;
             this.bossChicken.height=200;
             this.bossChicken.x=450;

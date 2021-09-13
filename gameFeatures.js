@@ -41,14 +41,14 @@ class Game{
 
     createBossChicken(){
         this.bossChicken = new Chicken();
-            this.bossChicken.image.src = './img/chickenBoss.png'
-            this.bossChicken.HP=wave_number*7;
-            this.bossChicken.width=200;
-            this.bossChicken.height=200;
-            this.bossChicken.x=450;
-            this.bossChicken.y=-200;
-            arrChickens.push(this.bossChicken);
-            //arrChickens.push(this.bossChicken)
+        this.bossChicken.image.src = './img/chickenBoss.png'
+        this.bossChicken.HP=wave_number*7;
+        this.bossChicken.width=200;
+        this.bossChicken.height=200;
+        this.bossChicken.x=450;
+        this.bossChicken.y=-200;
+        arrChickens.push(this.bossChicken);
+        //arrChickens.push(this.bossChicken)
     }
 
     prepareNextWave(){
@@ -75,6 +75,10 @@ class Game{
         if(wave_number%3==0){
             this.gift = new Gift();
             arrGift.push(this.gift)
+        }
+        if(wave_number==11g){
+            isGameOver=true;
+            alert("you pha' dao? the game");
         }
     }
 

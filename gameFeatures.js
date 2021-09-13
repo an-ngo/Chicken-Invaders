@@ -52,7 +52,7 @@ class Game{
     }
 
     prepareNextWave(){
-        if(wave_number%5!=0&&!isBoss){     //wave 5 is BOSS WAVE
+        if(wave_number%3!=0&&!isBoss){     //wave 5 is BOSS WAVE
             isBoss=false;
             wave_number+=1;
             number_chicken_per_wave= 3 + wave_number*3;

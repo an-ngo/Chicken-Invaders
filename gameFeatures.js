@@ -55,7 +55,7 @@ class Game{
         if(wave_number%3!=0&&!isBoss){     //wave 5 is BOSS WAVE
             isBoss=false;
             wave_number+=1;
-            number_chicken_per_wave= 3 + wave_number*3;
+            number_chicken_per_wave= 1 + wave_number*2;
             this.createArrChickens();
             
         }else{
@@ -64,7 +64,7 @@ class Game{
             sound1.pause();
             sound2.play();
             isBoss=true;
-            number_chicken_per_wave=3+wave_number*5;
+            number_chicken_per_wave=2 + wave_number*4;
             this.createBossChicken();
             this.createArrChickens();
             

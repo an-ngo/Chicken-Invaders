@@ -104,8 +104,7 @@ class Game{
                 let egg = new Egg();
                 egg.x=arrChickens[i].x+25;
                 egg.y=arrChickens[i].y+arrChickens[i].height-10;
-                // egg.image= new Image();
-                // egg.image.src='./img/egg.png'
+
                 
                 arrEggs.push(egg)
             }
@@ -195,21 +194,6 @@ class Game{
             }
         }
     }
-    // start(){
-    //     this.createArrChickens();
-    //     if(this.over){
-    //         //gameOver setting here
-
-    //     }
-    //     else{
-    //         //Prepare here
-    //         this.context.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
-    //         //callBackGameStart = requestAnimationFrame(this.start)
-            
-
-    //     }
-        
-
-    // }
+    
 
 }

@@ -16,12 +16,7 @@ class SpaceShip{
         
         
     }
-    // shootOutBullet(){
-    //     let bullet = new Bullet;
-    //     bullet.x=this.canonOfSpaceShip_X;
-    //     bullet.y=this.y-bullet.height;
-    //     bullet.makeBulletMove(this.context);
-    // }
+
     moveSSLeft(){
         this.x-=this.speedX
     }

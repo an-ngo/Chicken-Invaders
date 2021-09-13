@@ -5,7 +5,7 @@ class Chicken{
 
         this.x=0
         this.y=0
-        //this.x=Math.round(Math.random()*(CANVAS_WIDTH-this.width))
+
         this.radius = 40;
         this.image = new Image();
         this.bottomLeftX=this.x 
@@ -21,6 +21,7 @@ class Chicken{
         this.HP=Math.floor(Math.random())+1;
         this.count=0
         this.gift= new Gift();
+        //this.onlyEgg=1
     }
     drawChicken(ctx){
         

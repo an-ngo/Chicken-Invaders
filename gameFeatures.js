@@ -67,6 +67,7 @@ class Game{
             number_chicken_per_wave=2 + wave_number*4;
             this.createBossChicken();
             this.createArrChickens();
+            arrChickens[0].image.src = './img/chickenBoss.png'
             
         }
         document.getElementById("waveDiv").innerHTML=wave_number;

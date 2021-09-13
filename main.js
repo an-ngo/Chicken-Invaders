@@ -201,7 +201,6 @@ function destroyAllChickens(){
 function moveSpaceShipMouse(e){
     spaceShip.x=event.clientX-45;
     spaceShip.y=event.clientY-35;
-    spaceShip.update();
     spaceShip.drawSpaceShip();
 }
 
